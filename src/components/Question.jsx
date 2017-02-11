@@ -13,7 +13,7 @@ class Question extends Component {
               question.choices.map(choice => {
                 return(
                   <li key={choice.id} className="list-group-item">
-                    {choice.id} <input type="radio" onChange={this.onChange.bind(this)} /> {choice.text}
+                    {choice.id} <input name={'question-'+question.id} type="radio" onChange={this.onChange.bind(choice)} /> {choice.text}
                   </li>
                   )
               })
@@ -24,7 +24,7 @@ class Question extends Component {
   }
 
   onChange(){
-    console.log('fuck')
+    console.log(this.text)
   }
 
 }

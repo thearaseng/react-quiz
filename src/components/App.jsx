@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import QuestionList from './QuestionList.jsx'
+import Scorebox from './Scorebox.jsx'
 
 class App extends Component {
 
@@ -83,9 +84,11 @@ class App extends Component {
   }
 
   render() {
+    let state = this.state
     return(
         <div>
-          <QuestionList questions={this.state.questions} ></QuestionList>
+          <Scorebox current={state.current} count={state.questions.length} score={state.score}/>
+          <QuestionList questions={state.questions} ></QuestionList>
         </div>
       )
   }
