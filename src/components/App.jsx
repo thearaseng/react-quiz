@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import QuestionList from './QuestionList.jsx'
 import Scorebox from './Scorebox.jsx'
+import Result from './Result.jsx'
 
 class App extends Component {
 
@@ -85,12 +86,17 @@ class App extends Component {
 
   render() {
     let state = this.state
-    return(
-        <div>
-          <Scorebox current={state.current} count={state.questions.length} score={state.score}/>
-          <QuestionList question={state.questions[this.state.current]} nextAnswer={this.nextAnswer.bind(this)} answerRight={this.answerRight.bind(this)} ></QuestionList>
-        </div>
-      )
+    if (this.state.current < this.state.questions.length)
+      return(
+          <div>
+            <Scorebox current={state.current} count={state.questions.length} score={state.score}/>
+            <QuestionList question={state.questions[this.state.current]} nextAnswer={this.nextAnswer.bind(this)} answerRight={this.answerRight.bind(this)} ></QuestionList>
+          </div>
+        )
+    else
+      return(
+        <Result props={{score: this.state.score, total: this.state.questions.length, reload: this.reload.bind(this)}} />
+        )
   }
 
   answerRight(){
@@ -99,6 +105,10 @@ class App extends Component {
 
   nextAnswer(){
     this.setState({current: ++this.state.current})
+  }
+
+  reload(){
+    this.setState({score:0, current:0})
   }
 
 }
