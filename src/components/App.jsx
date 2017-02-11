@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom'
+import QuestionList from './QuestionList.jsx'
 
 class App extends Component {
 
@@ -85,7 +85,7 @@ class App extends Component {
   render() {
     return(
         <div>
-
+          <QuestionList questions={this.state.questions} ></QuestionList>
         </div>
       )
   }
