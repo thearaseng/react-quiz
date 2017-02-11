@@ -79,7 +79,7 @@ class App extends Component {
         },
       ],
       score:0,
-      current:1
+      current:0
     }
   }
 
@@ -88,10 +88,19 @@ class App extends Component {
     return(
         <div>
           <Scorebox current={state.current} count={state.questions.length} score={state.score}/>
-          <QuestionList questions={state.questions} ></QuestionList>
+          <QuestionList question={state.questions[this.state.current]} nextAnswer={this.nextAnswer.bind(this)} answerRight={this.answerRight.bind(this)} ></QuestionList>
         </div>
       )
   }
+
+  answerRight(){
+    this.setState({score:++this.state.score})
+  }
+
+  nextAnswer(){
+    this.setState({current: ++this.state.current})
+  }
+
 }
 
 export default App
