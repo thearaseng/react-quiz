@@ -76,7 +76,9 @@ class App extends Component {
           ],
           correct:'b'
         },
-      ]
+      ],
+      score:0,
+      current:1
     }
   }
 
